@@ -7,8 +7,9 @@
         <title>Manage data</title>
     </head>
     <body>
-        <div class="container">
-
+        <div class="container" id="app">
+            <client-component></client-component>
         </div>
     </body>
 </html>
+<script src="{{ mix('/js/app.js') }}"></script>
