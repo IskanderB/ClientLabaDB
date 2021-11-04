@@ -5,16 +5,13 @@
                 <div class="card">
                     <div class="card-header">Default Component</div>
                     <div class="form-section">
-                        <select name="Databases">
+                        <select id="database" @change="handleSelectItem" v-model="selectedItem">
                             <option>Choose DB</option>
                             <option v-for="database in databases">
                                 {{database}}
                             </option>
                         </select>
-                        <button>Create DB</button>
-                    </div>
-                    <div class="message-section">
-
+                        <button @click="this.createDB">Create DB</button>
                     </div>
                 </div>
             </div>
@@ -27,15 +24,14 @@ export default {
     data: function () {
         return {
             databases: [],
-            messages: []
+            selectedItem: "Choose DB",
         }
     },
     props: [
-        'configData'
+        'configData',
+        'chooseDB',
+        'createDB'
     ],
-    mounted() {
-        console.log('DEFAULT COMPONENT');
-    },
     created() {
         axios({
             method: 'get',
@@ -45,6 +41,11 @@ export default {
                 let databases = JSON.parse(response.data.data);
                 this.databases = databases;
             });
+    },
+    methods: {
+        handleSelectItem: function (){
+            this.chooseDB(this.selectedItem);
+        }
     }
 }
 </script>

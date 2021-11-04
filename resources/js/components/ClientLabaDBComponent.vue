@@ -6,7 +6,13 @@
                     <div class="card-header">Base Component</div>
 
                     <div class="card-body">
-                        <component v-bind:is="component" :config-data="this.configData" class="tab"></component>
+                        <component class="tab"
+                            v-bind:is="component"
+                            :config-data="this.configData"
+                            :choose-d-b="chooseDB"
+                            :create-d-b="createDB"
+                            :database="database"
+                        ></component>
                     </div>
                 </div>
             </div>
@@ -15,26 +21,32 @@
 </template>
 
 <script>
-    // import CreateDBComponent from './CreateDBComponent.vue';
+    import DefaultComponent from "./DefaultComponent";
+    import CreateDBComponent from "./CreateDBComponent";
+    import TotalDBComponent from "./TotalDBComponent";
     export default {
-        // components: {
-        //     CreateDBComponent
-        // },
+        components: {
+            DefaultComponent,
+            CreateDBComponent,
+            TotalDBComponent
+        },
         props: [
             'configData'
         ],
         data: function () {
             return {
-                components: {
-                    'default': 'default-component',
-                    'create': 'create-component'
-                },
-                component: 'default-component'
+                component: 'DefaultComponent',
+                database: null
             }
         },
-        mounted() {
-            // console.log(this.components);
-
-        },
+        methods: {
+            chooseDB(database) {
+                this.database = database;
+                this.component = 'TotalDBComponent';
+            },
+            createDB() {
+                this.component = 'CreateDBComponent';
+            }
+        }
     }
 </script>
