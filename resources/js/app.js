@@ -20,6 +20,8 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('client-component', require('./components/ClientLabaDBComponent.vue').default);
+Vue.component('default-component', require('./components/DefaultComponent.vue').default);
+Vue.component('create-component', require('./components/CreateDBComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

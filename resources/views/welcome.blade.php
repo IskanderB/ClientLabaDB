@@ -8,7 +8,7 @@
     </head>
     <body>
         <div class="container" id="app">
-            <client-component></client-component>
+            <client-component :config-data="{{$configData}}" ></client-component>
         </div>
     </body>
 </html>
