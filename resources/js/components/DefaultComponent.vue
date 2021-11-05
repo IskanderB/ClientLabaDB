@@ -11,7 +11,7 @@
                                 {{database}}
                             </option>
                         </select>
-                        <button @click="this.createDB">Create DB</button>
+                        <button v-on:click="changeComponentToCreate">Create DB</button>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@ export default {
     props: [
         'configData',
         'chooseDB',
-        'createDB'
+        'changeComponent'
     ],
     created() {
         axios({
@@ -45,6 +45,10 @@ export default {
     methods: {
         handleSelectItem: function (){
             this.chooseDB(this.selectedItem);
+            this.changeComponent('TotalDBComponent');
+        },
+        changeComponentToCreate() {
+            this.changeComponent('CreateDBComponent');
         }
     }
 }

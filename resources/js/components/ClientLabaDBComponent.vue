@@ -10,7 +10,7 @@
                             v-bind:is="component"
                             :config-data="this.configData"
                             :choose-d-b="chooseDB"
-                            :create-d-b="createDB"
+                            :change-component="changeComponent"
                             :database="database"
                         ></component>
                     </div>
@@ -42,10 +42,9 @@
         methods: {
             chooseDB(database) {
                 this.database = database;
-                this.component = 'TotalDBComponent';
             },
-            createDB() {
-                this.component = 'CreateDBComponent';
+            changeComponent(componentName) {
+                this.component = componentName;
             }
         }
     }
