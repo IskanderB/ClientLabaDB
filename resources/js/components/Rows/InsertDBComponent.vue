@@ -1,14 +1,19 @@
-
 <template>
     <div>
-        <label>Select</label>
+        <label>Insert</label>
         <div>
-            <select v-model="column">
-                <option v-for="(value, name) in columns">{{name}}</option>
-            </select>
-            <input v-model="value">
+            <ul>
+                <li v-for="(value, name) in columns">
+
+                    <label>{{name}}</label>
+                    <input v-model="columns[name]">
+                </li>
+            </ul>
         </div>
-        <button @click="select">Select</button>
+        <button @click="insert">Insert</button>
+        <div id="message" v-for="message in messages" :style="{color: color}">
+            {{message}}
+        </div>
     </div>
 </template>
 
@@ -16,14 +21,14 @@
 export default {
     props: [
         'configData',
-        'database',
-        'messagesPrint',
+        'database'
     ],
     data: function () {
         return {
             columns: null,
-            value: null,
-            column: null
+            data: null,
+            messages: null,
+            color: 'red'
         }
     },
     created() {
@@ -37,11 +42,54 @@ export default {
             .then((response) => {
                 let columns = JSON.parse(response.data.data);
                 this.columns = columns;
-                this.column = Object.keys(this.columns)[0];
+                for (const [key, value] of Object.entries(columns)) {
+                    this.columns[key] = null;
+                }
             });
     },
     methods: {
-
+        insert() {
+            let columns = Object.assign({}, this.columns);
+            for (const [key, value] of Object.entries(this.columns)) {
+                if (value === null) {
+                    delete columns[key];
+                }
+            }
+            axios({
+                method: 'post',
+                url: this.configData.appUrl + '/api/' + this.configData.apiVersion + '/db/rows/insert',
+                data: {
+                    name: this.database,
+                    data: columns
+                }
+            })
+                .then((response) => {
+                    let messages = response.data.message;
+                    if (response.data.success) {
+                        this.messagesPrint(messages, 'green');
+                    }
+                    else {
+                        this.messagesPrint(messages);
+                    }
+                });
+        },
+        messagesPrint(messages, color = 'red') {
+            this.color = color;
+            this.messages = [];
+            if (typeof messages == 'string') {
+                this.messages.push(messages);
+                return null;
+            }
+            for (const [key, value] of Object.entries(messages)) {
+                if (typeof value == 'string') {
+                    this.messages.push(value);
+                    continue;
+                }
+                for (let message of value) {
+                    this.messages.push(message);
+                }
+            }
+        }
     }
 }
 </script>

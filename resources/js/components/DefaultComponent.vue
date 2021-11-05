@@ -11,7 +11,7 @@
                                 {{database}}
                             </option>
                         </select>
-                        <button v-on:click="changeComponentToCreate">Create DB</button>
+                        <button v-on:click="changeComponentDefault('CreateDBComponent')">Create DB</button>
                     </div>
                 </div>
             </div>
@@ -45,10 +45,10 @@ export default {
     methods: {
         handleSelectItem: function (){
             this.chooseDB(this.selectedItem);
-            this.changeComponent('TotalDBComponent');
+            this.changeComponentDefault('TotalDBComponent');
         },
-        changeComponentToCreate() {
-            this.changeComponent('CreateDBComponent');
+        changeComponentDefault(component) {
+            this.changeComponent(component);
         }
     }
 }

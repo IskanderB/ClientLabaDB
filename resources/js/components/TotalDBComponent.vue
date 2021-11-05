@@ -30,7 +30,7 @@
                     <RestoreDBComponent :database="database" :messages-print="messagesPrint" :config-data="configData"></RestoreDBComponent>
                     <ImportDBComponent :database="database" :messages-print="messagesPrint" :config-data="configData"></ImportDBComponent>
                     <br><br>
-                    <button>Insert</button>
+                    <button @click="changeComponentTotal('InsertDBComponent')">Insert</button>
                     <button>Edit</button>
                 </div>
             </div>
@@ -55,6 +55,7 @@ export default {
         SelectDBComponent,
     },
     props: [
+        'changeComponent',
         'configData',
         'database',
     ],
@@ -89,6 +90,9 @@ export default {
                     this.messages.push(message);
                 }
             }
+        },
+        changeComponentTotal(component) {
+            this.changeComponent(component);
         }
     }
 }

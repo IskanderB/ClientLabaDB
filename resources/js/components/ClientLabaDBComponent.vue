@@ -24,11 +24,13 @@
     import DefaultComponent from "./DefaultComponent";
     import CreateDBComponent from "./CreateDBComponent";
     import TotalDBComponent from "./TotalDBComponent";
+    import InsertDBComponent from "./Rows/InsertDBComponent";
     export default {
         components: {
             DefaultComponent,
             CreateDBComponent,
-            TotalDBComponent
+            TotalDBComponent,
+            InsertDBComponent
         },
         props: [
             'configData'

@@ -2068,6 +2068,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _DefaultComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DefaultComponent */ "./resources/js/components/DefaultComponent.vue");
 /* harmony import */ var _CreateDBComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateDBComponent */ "./resources/js/components/CreateDBComponent.vue");
 /* harmony import */ var _TotalDBComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TotalDBComponent */ "./resources/js/components/TotalDBComponent.vue");
+/* harmony import */ var _Rows_InsertDBComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Rows/InsertDBComponent */ "./resources/js/components/Rows/InsertDBComponent.vue");
 //
 //
 //
@@ -2090,6 +2091,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 
@@ -2097,7 +2099,8 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     DefaultComponent: _DefaultComponent__WEBPACK_IMPORTED_MODULE_0__["default"],
     CreateDBComponent: _CreateDBComponent__WEBPACK_IMPORTED_MODULE_1__["default"],
-    TotalDBComponent: _TotalDBComponent__WEBPACK_IMPORTED_MODULE_2__["default"]
+    TotalDBComponent: _TotalDBComponent__WEBPACK_IMPORTED_MODULE_2__["default"],
+    InsertDBComponent: _Rows_InsertDBComponent__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   props: ['configData'],
   data: function data() {
@@ -2553,10 +2556,159 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     handleSelectItem: function handleSelectItem() {
       this.chooseDB(this.selectedItem);
-      this.changeComponent('TotalDBComponent');
+      this.changeComponentDefault('TotalDBComponent');
     },
-    changeComponentToCreate: function changeComponentToCreate() {
-      this.changeComponent('CreateDBComponent');
+    changeComponentDefault: function changeComponentDefault(component) {
+      this.changeComponent(component);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Rows/InsertDBComponent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Rows/InsertDBComponent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['configData', 'database'],
+  data: function data() {
+    return {
+      columns: null,
+      data: null,
+      messages: null,
+      color: 'red'
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios({
+      method: 'get',
+      url: this.configData.appUrl + '/api/' + this.configData.apiVersion + '/db/columns/list',
+      params: {
+        name: this.database
+      }
+    }).then(function (response) {
+      var columns = JSON.parse(response.data.data);
+      _this.columns = columns;
+
+      for (var _i = 0, _Object$entries = Object.entries(columns); _i < _Object$entries.length; _i++) {
+        var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+            key = _Object$entries$_i[0],
+            value = _Object$entries$_i[1];
+
+        _this.columns[key] = null;
+      }
+    });
+  },
+  methods: {
+    insert: function insert() {
+      var _this2 = this;
+
+      var columns = Object.assign({}, this.columns);
+
+      for (var _i2 = 0, _Object$entries2 = Object.entries(this.columns); _i2 < _Object$entries2.length; _i2++) {
+        var _Object$entries2$_i = _slicedToArray(_Object$entries2[_i2], 2),
+            key = _Object$entries2$_i[0],
+            value = _Object$entries2$_i[1];
+
+        if (value === null) {
+          delete columns[key];
+        }
+      }
+
+      axios({
+        method: 'post',
+        url: this.configData.appUrl + '/api/' + this.configData.apiVersion + '/db/rows/insert',
+        data: {
+          name: this.database,
+          data: columns
+        }
+      }).then(function (response) {
+        var messages = response.data.message;
+
+        if (response.data.success) {
+          _this2.messagesPrint(messages, 'green');
+        } else {
+          _this2.messagesPrint(messages);
+        }
+      });
+    },
+    messagesPrint: function messagesPrint(messages) {
+      var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'red';
+      this.color = color;
+      this.messages = [];
+
+      if (typeof messages == 'string') {
+        this.messages.push(messages);
+        return null;
+      }
+
+      for (var _i3 = 0, _Object$entries3 = Object.entries(messages); _i3 < _Object$entries3.length; _i3++) {
+        var _Object$entries3$_i = _slicedToArray(_Object$entries3[_i3], 2),
+            key = _Object$entries3$_i[0],
+            value = _Object$entries3$_i[1];
+
+        if (typeof value == 'string') {
+          this.messages.push(value);
+          continue;
+        }
+
+        var _iterator = _createForOfIteratorHelper(value),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var message = _step.value;
+            this.messages.push(message);
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+      }
     }
   }
 });
@@ -2731,7 +2883,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     ImportDBComponent: _DB_ImportDBComponent__WEBPACK_IMPORTED_MODULE_4__["default"],
     SelectDBComponent: _Rows_SelectDBComponent__WEBPACK_IMPORTED_MODULE_5__["default"]
   },
-  props: ['configData', 'database'],
+  props: ['changeComponent', 'configData', 'database'],
   data: function data() {
     return {
       columns: null,
@@ -2782,6 +2934,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           _iterator.f();
         }
       }
+    },
+    changeComponentTotal: function changeComponentTotal(component) {
+      this.changeComponent(component);
     }
   }
 });
@@ -38491,6 +38646,45 @@ component.options.__file = "resources/js/components/DefaultComponent.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/Rows/InsertDBComponent.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/Rows/InsertDBComponent.vue ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _InsertDBComponent_vue_vue_type_template_id_68c4731b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InsertDBComponent.vue?vue&type=template&id=68c4731b& */ "./resources/js/components/Rows/InsertDBComponent.vue?vue&type=template&id=68c4731b&");
+/* harmony import */ var _InsertDBComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InsertDBComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/Rows/InsertDBComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _InsertDBComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _InsertDBComponent_vue_vue_type_template_id_68c4731b___WEBPACK_IMPORTED_MODULE_0__.render,
+  _InsertDBComponent_vue_vue_type_template_id_68c4731b___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Rows/InsertDBComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/Rows/SelectDBComponent.vue":
 /*!************************************************************!*\
   !*** ./resources/js/components/Rows/SelectDBComponent.vue ***!
@@ -38697,6 +38891,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Rows/InsertDBComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/Rows/InsertDBComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InsertDBComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./InsertDBComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Rows/InsertDBComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InsertDBComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/Rows/SelectDBComponent.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************!*\
   !*** ./resources/js/components/Rows/SelectDBComponent.vue?vue&type=script&lang=js& ***!
@@ -38861,6 +39071,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DefaultComponent_vue_vue_type_template_id_9ddb97b2___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DefaultComponent_vue_vue_type_template_id_9ddb97b2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DefaultComponent.vue?vue&type=template&id=9ddb97b2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/DefaultComponent.vue?vue&type=template&id=9ddb97b2&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Rows/InsertDBComponent.vue?vue&type=template&id=68c4731b&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/Rows/InsertDBComponent.vue?vue&type=template&id=68c4731b& ***!
+  \*******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InsertDBComponent_vue_vue_type_template_id_68c4731b___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InsertDBComponent_vue_vue_type_template_id_68c4731b___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InsertDBComponent_vue_vue_type_template_id_68c4731b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./InsertDBComponent.vue?vue&type=template&id=68c4731b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Rows/InsertDBComponent.vue?vue&type=template&id=68c4731b&");
 
 
 /***/ }),
@@ -39345,14 +39572,95 @@ var render = function () {
               2
             ),
             _vm._v(" "),
-            _c("button", { on: { click: _vm.changeComponentToCreate } }, [
-              _vm._v("Create DB"),
-            ]),
+            _c(
+              "button",
+              {
+                on: {
+                  click: function ($event) {
+                    return _vm.changeComponentDefault("CreateDBComponent")
+                  },
+                },
+              },
+              [_vm._v("Create DB")]
+            ),
           ]),
         ]),
       ]),
     ]),
   ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Rows/InsertDBComponent.vue?vue&type=template&id=68c4731b&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Rows/InsertDBComponent.vue?vue&type=template&id=68c4731b& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("label", [_vm._v("Insert")]),
+      _vm._v(" "),
+      _c("div", [
+        _c(
+          "ul",
+          _vm._l(_vm.columns, function (value, name) {
+            return _c("li", [
+              _c("label", [_vm._v(_vm._s(name))]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.columns[name],
+                    expression: "columns[name]",
+                  },
+                ],
+                domProps: { value: _vm.columns[name] },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.columns, name, $event.target.value)
+                  },
+                },
+              }),
+            ])
+          }),
+          0
+        ),
+      ]),
+      _vm._v(" "),
+      _c("button", { on: { click: _vm.insert } }, [_vm._v("Insert")]),
+      _vm._v(" "),
+      _vm._l(_vm.messages, function (message) {
+        return _c(
+          "div",
+          { style: { color: _vm.color }, attrs: { id: "message" } },
+          [_vm._v("\n        " + _vm._s(message) + "\n    ")]
+        )
+      }),
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -39582,7 +39890,17 @@ var render = function () {
             _c("br"),
             _c("br"),
             _vm._v(" "),
-            _c("button", [_vm._v("Insert")]),
+            _c(
+              "button",
+              {
+                on: {
+                  click: function ($event) {
+                    return _vm.changeComponentTotal("InsertDBComponent")
+                  },
+                },
+              },
+              [_vm._v("Insert")]
+            ),
             _vm._v(" "),
             _c("button", [_vm._v("Edit")]),
           ],
