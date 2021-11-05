@@ -31,7 +31,7 @@
                     <ImportDBComponent :database="database" :messages-print="messagesPrint" :config-data="configData"></ImportDBComponent>
                     <br><br>
                     <button @click="changeComponentTotal('InsertDBComponent')">Insert</button>
-                    <button>Edit</button>
+                    <button @click="changeComponentTotal('SelectForEditDBComponent')">Edit</button>
                 </div>
             </div>
         </div>

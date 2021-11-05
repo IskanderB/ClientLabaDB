@@ -8,6 +8,7 @@
             <input v-model="value">
         </div>
         <button @click="select">Select</button>
+        <button @click="deleteRow">Delete</button>
     </div>
 </template>
 
@@ -67,6 +68,28 @@ export default {
                     }
                     else {
                         this.getSelectResult([], [], 'none');
+                    }
+                });
+        },
+        deleteRow() {
+            this.getSelectResult([], [], 'none');
+            axios({
+                method: 'delete',
+                url: this.configData.appUrl + '/api/' + this.configData.apiVersion + '/db/rows/delete',
+                data: {
+                    name: this.database,
+                    data: {
+                        name: this.column,
+                        value: this.value
+                    }
+                }
+            })
+                .then((response) => {
+                    if (response.data.success) {
+                        this.messagesPrint(response.data.message, 'green');
+                    }
+                    else {
+                        this.messagesPrint(response.data.message);
                     }
                 });
         }
