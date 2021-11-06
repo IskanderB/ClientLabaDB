@@ -2084,20 +2084,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2163,6 +2149,84 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2551,11 +2615,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       databases: [],
-      selectedItem: "Choose DB"
+      selectedItem: 'Choose DB'
     };
   },
   props: ['configData', 'chooseDB', 'changeComponent'],
@@ -39584,52 +39655,19 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [_vm._v("Base Component")]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "card-body" },
-            [
-              _c(_vm.component, {
-                tag: "component",
-                staticClass: "tab",
-                attrs: {
-                  "config-data": this.configData,
-                  "choose-d-b": _vm.chooseDB,
-                  "change-component": _vm.changeComponent,
-                  "set-edit-data": _vm.setEditData,
-                  database: _vm.database,
-                  "edit-data": _vm.editData,
-                  "last-component": _vm.lastComponent,
-                },
-              }),
-            ],
-            1
-          ),
-        ]),
-        _vm._v(" "),
-        _c("br"),
-        _c("br"),
-        _c("br"),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            on: {
-              click: function ($event) {
-                return _vm.changeComponent(_vm.lastComponent)
-              },
-            },
-          },
-          [_vm._v("Back")]
-        ),
-      ]),
-    ]),
-  ])
+  return _c(_vm.component, {
+    tag: "component",
+    staticClass: "tab",
+    attrs: {
+      "config-data": this.configData,
+      "choose-d-b": _vm.chooseDB,
+      "change-component": _vm.changeComponent,
+      "set-edit-data": _vm.setEditData,
+      database: _vm.database,
+      "edit-data": _vm.editData,
+      "last-component": _vm.lastComponent,
+    },
+  })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -39655,176 +39693,180 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c(
-          "div",
-          { staticClass: "card" },
-          [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Create Component"),
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("label", [_vm._v("Name:")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.name,
-                    expression: "name",
-                  },
-                ],
-                domProps: { value: _vm.name },
-                on: {
-                  input: function ($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.name = $event.target.value
-                  },
-                },
-              }),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c(
-                "ul",
-                _vm._l(_vm.columns, function (value, name) {
-                  return _c("li", { attrs: { id: "" + name } }, [
-                    _c("label", [_vm._v(_vm._s(name))]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.columns[name].type,
-                              expression: "columns[name].type",
-                            },
-                          ],
-                          on: {
-                            change: function ($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function (o) {
-                                  return o.selected
-                                })
-                                .map(function (o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                _vm.columns[name],
-                                "type",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            },
-                          },
-                        },
-                        [
-                          _c("option", [_vm._v("integer")]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("string")]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("numeric")]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("boolean")]),
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.columns[name].unique,
-                              expression: "columns[name].unique",
-                            },
-                          ],
-                          on: {
-                            change: function ($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function (o) {
-                                  return o.selected
-                                })
-                                .map(function (o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                _vm.columns[name],
-                                "unique",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            },
-                          },
-                        },
-                        [
-                          _c("option", [_vm._v("not unique")]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("unique")]),
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.columns[name].name,
-                            expression: "columns[name].name",
-                          },
-                        ],
-                        domProps: { value: _vm.columns[name].name },
-                        on: {
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.columns[name],
-                              "name",
-                              $event.target.value
-                            )
-                          },
-                        },
-                      }),
-                    ]),
-                  ])
-                }),
-                0
-              ),
-              _vm._v(" "),
-              _c("button", { on: { click: _vm.create } }, [_vm._v("Create")]),
-            ]),
-            _vm._v(" "),
-            _vm._l(_vm.messages, function (message) {
+    _c("h1", { staticClass: "heading-create" }, [
+      _vm._v("Let's create your own DataBase"),
+    ]),
+    _vm._v(" "),
+    _c("h2", { staticClass: "subtitle-create" }, [
+      _vm._v("You can manage, make changes and delete your database"),
+    ]),
+    _vm._v(" "),
+    _c("div", { attrs: { action: "", method: "post" } }, [
+      _c("div", { staticClass: "text-field-create" }, [
+        _c("p", { staticClass: "text-field-create-block" }, [
+          _c(
+            "label",
+            {
+              staticClass: "text-field-create-label",
+              attrs: { for: "create" },
+            },
+            [_vm._v("Enter the name *")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.name,
+                expression: "name",
+              },
+            ],
+            staticClass: "text-field-create-input",
+            attrs: {
+              id: "create",
+              type: "search",
+              placeholder: "Name of database",
+            },
+            domProps: { value: _vm.name },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.name = $event.target.value
+              },
+            },
+          }),
+          _vm._v(" "),
+          _c(
+            "ul",
+            { staticClass: "create-nav" },
+            _vm._l(_vm.columns, function (value, name) {
               return _c(
-                "div",
-                { style: { color: _vm.color }, attrs: { id: "message" } },
+                "li",
+                { staticClass: "create-nav-item", attrs: { id: "" + name } },
                 [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(message) +
-                      "\n                "
+                  _vm._v(_vm._s(name) + "\n                        "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.columns[name].type,
+                          expression: "columns[name].type",
+                        },
+                      ],
+                      staticClass: "create-select",
+                      on: {
+                        change: function ($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function (o) {
+                              return o.selected
+                            })
+                            .map(function (o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.columns[name],
+                            "type",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        },
+                      },
+                    },
+                    [
+                      _c("option", [_vm._v("integer")]),
+                      _vm._v(" "),
+                      _c("option", [_vm._v("string")]),
+                      _vm._v(" "),
+                      _c("option", [_vm._v("numeric")]),
+                      _vm._v(" "),
+                      _c("option", [_vm._v("boolean")]),
+                    ]
                   ),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.columns[name].unique,
+                          expression: "columns[name].unique",
+                        },
+                      ],
+                      staticClass: "create-select",
+                      on: {
+                        change: function ($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function (o) {
+                              return o.selected
+                            })
+                            .map(function (o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.columns[name],
+                            "unique",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        },
+                      },
+                    },
+                    [
+                      _c("option", [_vm._v("not unique")]),
+                      _vm._v(" "),
+                      _c("option", [_vm._v("unique")]),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.columns[name].name,
+                        expression: "columns[name].name",
+                      },
+                    ],
+                    staticClass: "create-select",
+                    attrs: { type: "name", placeholder: "name" },
+                    domProps: { value: _vm.columns[name].name },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.columns[name], "name", $event.target.value)
+                      },
+                    },
+                  }),
                 ]
               )
             }),
-          ],
-          2
-        ),
+            0
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "button-create",
+              attrs: { type: "submit" },
+              on: { click: _vm.create },
+            },
+            [_vm._v("\n                    Create it!\n                ")]
+          ),
+        ]),
       ]),
     ]),
   ])
@@ -39977,15 +40019,19 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v("Default Component"),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-section" }, [
+  return _c("header", { staticClass: "header" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("h2", { staticClass: "subtitle" }, [
+      _vm._v("Turning your big data into reality"),
+    ]),
+    _vm._v(" "),
+    _c("nav", { staticClass: "main-nav" }, [
+      _c("ul", { staticClass: "site-nav" }, [
+        _c("li", { staticClass: "main-nav-item" }, [
+          _c("div", [
+            _c("label", { staticClass: "choose-database-label" }),
+            _vm._v(" "),
             _c(
               "select",
               {
@@ -39997,6 +40043,7 @@ var render = function () {
                     expression: "selectedItem",
                   },
                 ],
+                staticClass: "choose-database",
                 attrs: { id: "database" },
                 on: {
                   change: [
@@ -40018,10 +40065,12 @@ var render = function () {
                 },
               },
               [
-                _c("option", [_vm._v("Choose DB")]),
+                _c("option", { staticClass: "choose-option" }, [
+                  _vm._v(_vm._s(_vm.selectedItem)),
+                ]),
                 _vm._v(" "),
                 _vm._l(_vm.databases, function (database) {
-                  return _c("option", [
+                  return _c("option", { staticClass: "choose-option" }, [
                     _vm._v(
                       "\n                            " +
                         _vm._s(database) +
@@ -40032,25 +40081,39 @@ var render = function () {
               ],
               2
             ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                on: {
-                  click: function ($event) {
-                    return _vm.changeComponentDefault("CreateDBComponent")
-                  },
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "main-nav-item" }, [
+          _c(
+            "button",
+            {
+              on: {
+                click: function ($event) {
+                  return _vm.changeComponentDefault("CreateDBComponent")
                 },
               },
-              [_vm._v("Create DB")]
-            ),
-          ]),
+            },
+            [_vm._v("\n                    Create DataBase\n                ")]
+          ),
         ]),
       ]),
     ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h1", { staticClass: "heading" }, [
+      _vm._v("What about your "),
+      _c("br"),
+      _c("b", [_vm._v("DataBase")]),
+      _vm._v("?"),
+    ])
+  },
+]
 render._withStripped = true
 
 

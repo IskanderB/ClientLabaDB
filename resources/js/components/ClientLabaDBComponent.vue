@@ -1,28 +1,14 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Base Component</div>
-
-                    <div class="card-body">
-                        <component class="tab"
-                            v-bind:is="component"
-                            :config-data="this.configData"
-                            :choose-d-b="chooseDB"
-                            :change-component="changeComponent"
-                            :set-edit-data="setEditData"
-                            :database="database"
-                            :edit-data="editData"
-                            :last-component="lastComponent"
-                        ></component>
-                    </div>
-                </div>
-                <br><br><br>
-                <button @click="changeComponent(lastComponent)">Back</button>
-            </div>
-        </div>
-    </div>
+    <component class="tab"
+               v-bind:is="component"
+               :config-data="this.configData"
+               :choose-d-b="chooseDB"
+               :change-component="changeComponent"
+               :set-edit-data="setEditData"
+               :database="database"
+               :edit-data="editData"
+               :last-component="lastComponent"
+    ></component>
 </template>
 
 <script>

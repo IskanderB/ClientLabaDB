@@ -1,22 +1,29 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Default Component</div>
-                    <div class="form-section">
-                        <select id="database" @change="handleSelectItem" v-model="selectedItem">
-                            <option>Choose DB</option>
-                            <option v-for="database in databases">
+    <header class="header">
+        <h1 class="heading">What about your <br><b>DataBase</b>?</h1>
+        <h2 class="subtitle">Turning your big data into reality</h2>
+
+        <nav class="main-nav">
+            <ul class="site-nav">
+                <li class="main-nav-item">
+                    <div>
+                        <label class="choose-database-label"></label>
+                        <select id="database" class="choose-database" @change="handleSelectItem" v-model="selectedItem">
+                            <option class="choose-option">{{selectedItem}}</option>
+                            <option class="choose-option" v-for="database in databases">
                                 {{database}}
                             </option>
                         </select>
-                        <button v-on:click="changeComponentDefault('CreateDBComponent')">Create DB</button>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                </li>
+                <li class="main-nav-item">
+                    <button @click="changeComponentDefault('CreateDBComponent')">
+                        Create DataBase
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
 </template>
 
 <script>
@@ -24,7 +31,7 @@ export default {
     data: function () {
         return {
             databases: [],
-            selectedItem: "Choose DB",
+            selectedItem: 'Choose DB',
         }
     },
     props: [
