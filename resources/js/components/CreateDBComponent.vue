@@ -1,41 +1,4 @@
 <template>
-<!--    <div class="container">-->
-<!--        <div class="row justify-content-center">-->
-<!--            <div class="col-md-8">-->
-<!--                <div class="card">-->
-<!--                    <div class="card-header">Create Component</div>-->
-<!--                    <div>-->
-<!--                        <label>Name:</label>-->
-<!--                        <input v-model="name">-->
-<!--                    </div>-->
-<!--                    <div class="card-body">-->
-<!--                        <ul>-->
-<!--                            <li v-bind:id="`${name}`" v-for="(value, name) in columns">-->
-<!--                                <label>{{name}}</label>-->
-<!--                                <div>-->
-<!--                                    <select v-model="columns[name].type">-->
-<!--                                        <option>integer</option>-->
-<!--                                        <option>string</option>-->
-<!--                                        <option>numeric</option>-->
-<!--                                        <option>boolean</option>-->
-<!--                                    </select>-->
-<!--                                    <select v-model="columns[name].unique">-->
-<!--                                        <option>not unique</option>-->
-<!--                                        <option>unique</option>-->
-<!--                                    </select>-->
-<!--                                    <input v-model="columns[name].name">-->
-<!--                                </div>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                        <button @click="create">Create</button>-->
-<!--                    </div>-->
-<!--                    <div id="message" v-for="message in messages" :style="{color: color}">-->
-<!--                        {{message}}-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
     <div class="container">
         <h1 class="heading-create">Let's create your own DataBase</h1>
         <h2 class="subtitle-create">You can manage, make changes and delete your database</h2>
@@ -60,57 +23,19 @@
                         </select>
                         <input type="name" placeholder="name" class="create-select" v-model="columns[name].name">
                     </li>
-
-<!--                    <li class="create-nav-item">Column_2-->
-<!--                        <select class="create-select">-->
-<!--                            <option>integer</option>-->
-<!--                            <option>char</option>-->
-<!--                            <option>float</option>-->
-<!--                            <option>string</option>-->
-<!--                            <option>date</option>-->
-<!--                        </select>-->
-<!--                        <select class="create-select">-->
-<!--                            <option>unique</option>-->
-<!--                            <option>not unique</option>-->
-<!--                        </select class="create-select">-->
-<!--                        <input type="name" placeholder="name" class="create-select">-->
-<!--                    </li>-->
-
-<!--                    <li class="create-nav-item">Column_3-->
-<!--                        <select class="create-select">-->
-<!--                            <option>integer</option>-->
-<!--                            <option>char</option>-->
-<!--                            <option>float</option>-->
-<!--                            <option>string</option>-->
-<!--                            <option>date</option>-->
-<!--                        </select>-->
-<!--                        <select class="create-select">-->
-<!--                            <option>unique</option>-->
-<!--                            <option>not unique</option>-->
-<!--                        </select>-->
-<!--                        <input type="name" placeholder="name"  class="create-select">-->
-<!--                    </li>-->
-
-<!--                    <li class="create-nav-item">Column_4-->
-<!--                        <select class="create-select">-->
-<!--                            <option>integer</option>-->
-<!--                            <option>char</option>-->
-<!--                            <option>float</option>-->
-<!--                            <option>string</option>-->
-<!--                            <option>date</option>-->
-<!--                        </select>-->
-<!--                        <select class="create-select">-->
-<!--                            <option>unique</option>-->
-<!--                            <option>not unique</option>-->
-<!--                        </select>-->
-<!--                        <input type="name" placeholder="name" class="create-select">-->
-<!--                    </li>-->
-
                 </ul>
                 <button type="submit" class="button-create" @click="create">
                     Create it!
                 </button>
                 </p>
+                <section class="modal-response">
+                    <h2 class="visually-hidden">Модальное окно</h2>
+                    <div>
+                        <p class="modal-success-error" v-for="message in messages" :style="{color: color}">
+                            {{message}}
+                        </p>
+                    </div>
+                </section>
             </div>
         </div>
     </div>

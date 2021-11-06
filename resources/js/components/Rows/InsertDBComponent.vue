@@ -1,19 +1,41 @@
 <template>
-    <div>
-        <label>Insert</label>
-        <div>
-            <ul>
-                <li v-for="(value, name) in columns">
+<!--    <div>-->
+<!--        <label>Insert</label>-->
+<!--        <div>-->
+<!--            <ul>-->
+<!--                <li v-for="(value, name) in columns">-->
 
-                    <label>{{name}}</label>
-                    <input v-model="columns[name]">
-                </li>
-            </ul>
-        </div>
-        <button @click="insert">Insert</button>
-        <div id="message" v-for="message in messages" :style="{color: color}">
-            {{message}}
-        </div>
+<!--                    <label>{{name}}</label>-->
+<!--                    <input v-model="columns[name]">-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <button @click="insert">Insert</button>-->
+<!--        <div id="message" v-for="message in messages" :style="{color: color}">-->
+<!--            {{message}}-->
+<!--        </div>-->
+<!--    </div>-->
+    <div class="page-insert">
+        <h1 class="heading-insert">Insert something new</h1>
+        <h2 class="subtitle-insert">You can add rows to the table, filling them with values</h2>
+
+        <ul class="insert-nav">
+            <li class="insert-nav-item" v-for="(value, name) in columns"> {{name}}
+                <input v-model="columns[name]" placeholder="enter the value" class="insert-nav-input">
+            </li>
+        </ul>
+        <button @click="insert" class="button-insert-it">
+            Insert it!
+        </button>
+
+        <section class="modal-response">
+            <h2 class="visually-hidden">Модальное окно</h2>
+            <div>
+                <p class="modal-success-error" v-for="message in messages" :style="{color: color}">
+                    {{message}}
+                </p>
+            </div>
+        </section>
     </div>
 </template>
 

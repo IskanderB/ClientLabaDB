@@ -1,14 +1,38 @@
 <template>
+<!--    <div>-->
+<!--        <label>Select</label>-->
+<!--        <div>-->
+<!--            <select v-model="column">-->
+<!--                <option v-for="(value, name) in columns">{{name}}</option>-->
+<!--            </select>-->
+<!--            <input v-model="value">-->
+<!--        </div>-->
+<!--        <button @click="select">Select</button>-->
+<!--        <button @click="deleteRow">Delete</button>-->
+<!--    </div>-->
     <div>
-        <label>Select</label>
-        <div>
-            <select v-model="column">
+        <div class="text-field-search">
+            <select class="text-field-select" v-model="column">
                 <option v-for="(value, name) in columns">{{name}}</option>
             </select>
-            <input v-model="value">
+            <p class="text-field-search-block">
+                <input name="comment" placeholder="Enter the value" class="text-field-search-input" v-model="value">
+
+            <ul class="rows-action">
+                <li>
+                    <button class="button-search" @click="select">
+                        Select
+                    </button>
+                </li>
+                <li>
+                    <button class="button-search" @click="deleteRow">
+                        Delete
+                    </button>
+                </li>
+            </ul>
+
+            </p>
         </div>
-        <button @click="select">Select</button>
-        <button @click="deleteRow">Delete</button>
     </div>
 </template>
 

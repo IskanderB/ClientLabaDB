@@ -1,16 +1,32 @@
 <template>
-    <div>
-        <label>Select</label>
-        <div>
-            <select v-model="column">
-                <option v-for="item in columns">{{item}}</option>
+    <div class="edit-div">
+        <h1 class="heading-edit">Edit as you like</h1>
+        <h2 class="subtitle-edit">You can change the values ​​in the columns of your choice</h2>
+
+        <h3 class="subtitle-edit-name">Test Name of DataBase</h3>
+
+        <div class="text-field-search-edit">
+            <select class="text-field-select-edit" v-model="column">
+                <option class="select-options-edit" v-for="item in columns">{{item}}</option>
             </select>
-            <input v-model="value">
+            <p class="text-field-edit-block">
+                <label class="text-field-search-label">Select *</label>
+                <input v-model="value" name="comment" placeholder="Enter the value" class="text-field-search-input">
+
+                <button @click="select" class="button-edit">
+                    Edit
+                </button>
+            </p>
         </div>
-        <button @click="select">Edit</button>
-        <div v-for="message in messages" :style="{color: color}">
-            {{message}}
-        </div>
+
+        <section class="modal-response">
+            <h2 class="visually-hidden">Модальное окно</h2>
+            <div>
+                <p class="modal-success-error" v-for="message in messages" :style="{color: color}">
+                    {{message}}
+                </p>
+            </div>
+        </section>
     </div>
 </template>
 

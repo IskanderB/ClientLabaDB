@@ -1,14 +1,20 @@
 <template>
-    <component class="tab"
-               v-bind:is="component"
-               :config-data="this.configData"
-               :choose-d-b="chooseDB"
-               :change-component="changeComponent"
-               :set-edit-data="setEditData"
-               :database="database"
-               :edit-data="editData"
-               :last-component="lastComponent"
-    ></component>
+    <div>
+        <component class="tab"
+                   v-bind:is="component"
+                   :config-data="this.configData"
+                   :choose-d-b="chooseDB"
+                   :change-component="changeComponent"
+                   :set-edit-data="setEditData"
+                   :database="database"
+                   :edit-data="editData"
+                   :last-component="lastComponent"
+        ></component>
+
+        <div class="back-div">
+            <button class="back-btn" @click="changeComponent(lastComponent)">Back</button>
+        </div>
+    </div>
 </template>
 
 <script>
