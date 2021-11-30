@@ -5,6 +5,8 @@
 It's View application is a interface for DBMS API application https://mdata.tutorib.ru/.
 Git repository: https://github.com/IskanderB/LabaDB
 This project was completed as part of the assignment for the Data Management course.
+Frontend and backend developed by Aleksandr Khurtin.
+Design and layout developed by Oxana Vozmilova.
 
 ### How does that work?
 
